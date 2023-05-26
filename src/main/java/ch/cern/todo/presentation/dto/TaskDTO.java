@@ -1,22 +1,13 @@
-package ch.cern.todo.data.model;
+package ch.cern.todo.presentation.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Entity(name = "TASKS")
-public class TaskTodo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class TaskDTO {
     private Long id;
-    @NotNull
     private String name;
     private String description;
-    @NotNull
     private LocalDateTime deadline;
-    @ManyToOne
-    @NotNull
-    private TaskCategory category;
+    private TaskCategoryDTO category;
 
     public Long getId() {
         return id;
@@ -50,11 +41,11 @@ public class TaskTodo {
         this.deadline = deadline;
     }
 
-    public TaskCategory getCategory() {
+    public TaskCategoryDTO getCategory() {
         return category;
     }
 
-    public void setCategory(TaskCategory category) {
+    public void setCategory(TaskCategoryDTO category) {
         this.category = category;
     }
 }
