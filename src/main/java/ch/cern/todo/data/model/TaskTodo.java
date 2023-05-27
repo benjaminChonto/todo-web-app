@@ -18,6 +18,17 @@ public class TaskTodo {
     @NotNull
     private TaskCategory category;
 
+    public TaskTodo() {
+    }
+
+    public TaskTodo(Long id, String name, String description, LocalDateTime deadline, TaskCategory category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.deadline = deadline;
+        this.category = category;
+    }
+
     public Long getId() {
         return id;
     }

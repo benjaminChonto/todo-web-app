@@ -9,6 +9,17 @@ public class TaskDTO {
     private LocalDateTime deadline;
     private TaskCategoryDTO category;
 
+    public TaskDTO() {
+    }
+
+    public TaskDTO(Long id, String name, String description, LocalDateTime deadline, TaskCategoryDTO category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.deadline = deadline;
+        this.category = category;
+    }
+
     public Long getId() {
         return id;
     }
