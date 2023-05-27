@@ -3,15 +3,15 @@ package ch.cern.todo.presentation.dto;
 
 import java.util.Objects;
 
-public class TaskCategoryDTO {
+public class CategoryDTO {
     private Long id;
     private String name;
     private String description;
 
-    public TaskCategoryDTO() {
+    public CategoryDTO() {
     }
 
-    public TaskCategoryDTO(Long id, String name, String description) {
+    public CategoryDTO(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -21,7 +21,7 @@ public class TaskCategoryDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TaskCategoryDTO that = (TaskCategoryDTO) o;
+        CategoryDTO that = (CategoryDTO) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description);
     }
 

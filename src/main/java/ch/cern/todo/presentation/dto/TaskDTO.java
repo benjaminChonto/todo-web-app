@@ -8,12 +8,12 @@ public class TaskDTO {
     private String name;
     private String description;
     private LocalDateTime deadline;
-    private TaskCategoryDTO category;
+    private CategoryDTO category;
 
     public TaskDTO() {
     }
 
-    public TaskDTO(Long id, String name, String description, LocalDateTime deadline, TaskCategoryDTO category) {
+    public TaskDTO(Long id, String name, String description, LocalDateTime deadline, CategoryDTO category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -66,11 +66,11 @@ public class TaskDTO {
         this.deadline = deadline;
     }
 
-    public TaskCategoryDTO getCategory() {
+    public CategoryDTO getCategory() {
         return category;
     }
 
-    public void setCategory(TaskCategoryDTO category) {
+    public void setCategory(CategoryDTO category) {
         this.category = category;
     }
 }

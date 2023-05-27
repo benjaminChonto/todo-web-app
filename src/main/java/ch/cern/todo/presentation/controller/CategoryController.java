@@ -1,36 +1,36 @@
 package ch.cern.todo.presentation.controller;
 
-import ch.cern.todo.presentation.dto.TaskCategoryDTO;
+import ch.cern.todo.presentation.dto.CategoryDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController("/api/category")
-public class TaskCategoryController {
+public class CategoryController {
 
     @GetMapping
-    public ResponseEntity<List<TaskCategoryDTO>> getAll() {
+    public ResponseEntity<List<CategoryDTO>> getAll() {
         return null;
     }
 
     @PostMapping
-    public ResponseEntity<TaskCategoryDTO> create() {
+    public ResponseEntity<CategoryDTO> create() {
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskCategoryDTO> getCategory(@PathVariable Long id) {
+    public ResponseEntity<CategoryDTO> getCategory(@PathVariable Long id) {
         return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskCategoryDTO> update(@PathVariable Long id) {
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id) {
         return null;
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<TaskCategoryDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<CategoryDTO> delete(@PathVariable Long id) {
         return null;
     }
 

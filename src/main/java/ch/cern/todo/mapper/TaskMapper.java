@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = TaskCategoryMapper.class)
+@Mapper(componentModel = "spring", uses = CategoryMapper.class)
 public interface TaskMapper {
     TaskTodo dtoToEntity(TaskDTO dto);
     TaskDTO entityToDto(TaskTodo entity);

@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity(name = "TASK_CATEGORIES")
-public class TaskCategory {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,10 +14,10 @@ public class TaskCategory {
     private String name;
     private String description;
 
-    public TaskCategory() {
+    public Category() {
     }
 
-    public TaskCategory(Long id, String name, String description) {
+    public Category(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -27,7 +27,7 @@ public class TaskCategory {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TaskCategory that = (TaskCategory) o;
+        Category that = (Category) o;
         return id.equals(that.id) && name.equals(that.name) && Objects.equals(description, that.description);
     }
 

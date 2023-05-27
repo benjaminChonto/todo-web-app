@@ -17,12 +17,12 @@ public class TaskTodo {
     private LocalDateTime deadline;
     @ManyToOne
     @NotNull
-    private TaskCategory category;
+    private Category category;
 
     public TaskTodo() {
     }
 
-    public TaskTodo(Long id, String name, String description, LocalDateTime deadline, TaskCategory category) {
+    public TaskTodo(Long id, String name, String description, LocalDateTime deadline, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -75,11 +75,11 @@ public class TaskTodo {
         this.deadline = deadline;
     }
 
-    public TaskCategory getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(TaskCategory category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

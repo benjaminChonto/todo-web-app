@@ -1,11 +1,10 @@
 package ch.cern.todo.mapper;
 
-import ch.cern.todo.data.model.TaskCategory;
+import ch.cern.todo.data.model.Category;
 import ch.cern.todo.data.model.TaskTodo;
-import ch.cern.todo.presentation.dto.TaskCategoryDTO;
+import ch.cern.todo.presentation.dto.CategoryDTO;
 import ch.cern.todo.presentation.dto.TaskDTO;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,10 +24,10 @@ class TaskMapperTest {
 
     @BeforeAll
     static void create() {
-        TaskCategory taskCategory = new TaskCategory(42L, "Test Category", "Descr for Test Category");
-        TaskCategoryDTO taskCategoryDTO = new TaskCategoryDTO(42L, "Test Category", "Descr for Test Category");
-        task = new TaskTodo(12L, "Test Task", "Descr for Test Task", LocalDateTime.of(2023,6,30,12,30), taskCategory);
-        taskDTO = new TaskDTO(12L, "Test Task", "Descr for Test Task", LocalDateTime.of(2023,6,30,12,30), taskCategoryDTO);
+        Category category = new Category(42L, "Test Category", "Descr for Test Category");
+        CategoryDTO categoryDTO = new CategoryDTO(42L, "Test Category", "Descr for Test Category");
+        task = new TaskTodo(12L, "Test Task", "Descr for Test Task", LocalDateTime.of(2023,6,30,12,30), category);
+        taskDTO = new TaskDTO(12L, "Test Task", "Descr for Test Task", LocalDateTime.of(2023,6,30,12,30), categoryDTO);
     }
 
     @Test
