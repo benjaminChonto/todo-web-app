@@ -2,6 +2,7 @@ package ch.cern.todo.data.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity(name = "TASK_CATEGORIES")
 public class TaskCategory {
@@ -20,6 +21,19 @@ public class TaskCategory {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskCategory that = (TaskCategory) o;
+        return id.equals(that.id) && name.equals(that.name) && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description);
     }
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package ch.cern.todo.presentation.dto;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class TaskDTO {
     private Long id;
@@ -18,6 +19,19 @@ public class TaskDTO {
         this.description = description;
         this.deadline = deadline;
         this.category = category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskDTO taskDTO = (TaskDTO) o;
+        return Objects.equals(id, taskDTO.id) && Objects.equals(name, taskDTO.name) && Objects.equals(description, taskDTO.description) && Objects.equals(deadline, taskDTO.deadline) && Objects.equals(category, taskDTO.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, deadline, category);
     }
 
     public Long getId() {

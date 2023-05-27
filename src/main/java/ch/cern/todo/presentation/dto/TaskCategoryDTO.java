@@ -1,5 +1,8 @@
 package ch.cern.todo.presentation.dto;
 
+
+import java.util.Objects;
+
 public class TaskCategoryDTO {
     private Long id;
     private String name;
@@ -12,6 +15,19 @@ public class TaskCategoryDTO {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskCategoryDTO that = (TaskCategoryDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description);
     }
 
     public Long getId() {

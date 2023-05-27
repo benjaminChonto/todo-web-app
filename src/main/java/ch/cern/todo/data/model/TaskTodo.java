@@ -3,6 +3,7 @@ package ch.cern.todo.data.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity(name = "TASKS")
 public class TaskTodo {
@@ -27,6 +28,19 @@ public class TaskTodo {
         this.description = description;
         this.deadline = deadline;
         this.category = category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskTodo taskTodo = (TaskTodo) o;
+        return id.equals(taskTodo.id) && name.equals(taskTodo.name) && Objects.equals(description, taskTodo.description) && deadline.equals(taskTodo.deadline) && category.equals(taskTodo.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, deadline, category);
     }
 
     public Long getId() {
