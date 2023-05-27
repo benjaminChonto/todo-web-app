@@ -4,7 +4,8 @@ import ch.cern.todo.presentation.dto.TaskDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/api/task")
+@RestController
+@RequestMapping("api/task")
 public class TaskController {
 
     @GetMapping
