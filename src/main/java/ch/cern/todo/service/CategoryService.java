@@ -35,10 +35,9 @@ public class CategoryService {
         return mapper.entityToDto(found);
     }
 
-    public CategoryDTO swap(Long id, CategoryDTO catUpdate) {
+    public CategoryDTO update(Long id, CategoryDTO catUpdate) {
         return repository.findById(id)
                 .map(cat -> {
-                    cat.setId(catUpdate.getId());
                     cat.setName(catUpdate.getName());
                     cat.setDescription(catUpdate.getDescription());
                     return mapper.entityToDto(repository.save(cat));
