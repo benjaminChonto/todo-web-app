@@ -35,6 +35,10 @@ public class CategoryService {
         return mapper.entityToDto(found);
     }
 
+    public Category getEntityByName(String name) {
+        return repository.findByName(name);
+    }
+
     public CategoryDTO update(Long id, CategoryDTO catUpdate) {
         return repository.findById(id)
                 .map(cat -> {

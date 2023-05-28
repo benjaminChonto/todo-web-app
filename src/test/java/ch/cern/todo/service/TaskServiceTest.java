@@ -10,6 +10,7 @@ import ch.cern.todo.presentation.dto.TaskDTO;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -27,6 +28,7 @@ class TaskServiceTest {
     TaskMapper mapper;
     @Autowired
     CategoryMapper categoryMapper;
+    CategoryService categoryService = mock(CategoryService.class);
     TaskRepository repository = mock(TaskRepository.class);
     TaskService service;
     static TaskTodo task;
@@ -34,11 +36,17 @@ class TaskServiceTest {
 
     @BeforeEach
     void create() {
-        service = new TaskService(mapper, categoryMapper, repository);
+        service = new TaskService(mapper, categoryMapper, repository, categoryService);
         Category cat = new Category(44L, "Test Cat", "Test Cat Descr");
         CategoryDTO catDTO = new CategoryDTO(44L, "Test Cat", "Test Cat Descr");
         task = new TaskTodo(24L, "Test Task", "Test Task Descr", LocalDateTime.of(2023,6,30,12,0), cat);
         taskDTO = new TaskDTO(24L, "Test Task", "Test Task Descr", LocalDateTime.of(2023,6,30,12,0), catDTO);
+        when(categoryService.getEntityByName(anyString())).thenAnswer(i -> {
+            String name = i.getArgument(0);
+            Category result = new Category();
+            result.setName(name);
+            return result;
+        });
     }
 
     @AfterEach
@@ -72,9 +80,13 @@ class TaskServiceTest {
     void update_found() {
         mockForSuccess();
         when(repository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
-        TaskDTO updateDTO = new TaskDTO(null, "Override", "Override Descr", LocalDateTime.now(), null);
+        CategoryDTO updateCategory = new CategoryDTO();
+        updateCategory.setName("update category");
+        TaskDTO updateDTO = new TaskDTO(null, "Override", "Override Descr", LocalDateTime.now(), updateCategory);
         TaskDTO result = service.update(24L, updateDTO);
         updateDTO.setId(24L);
+
+        verify(categoryService).getEntityByName("update category");
         verify(repository).findById(24L);
         verify(repository).save(any());
         assertEquals(updateDTO, result);
