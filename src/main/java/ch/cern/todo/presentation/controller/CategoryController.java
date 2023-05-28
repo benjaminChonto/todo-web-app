@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("api/category")
 public class CategoryController {
 
-    public CategoryService service;
+    private CategoryService service;
 
     public CategoryController(CategoryService service) {
         this.service = service;
