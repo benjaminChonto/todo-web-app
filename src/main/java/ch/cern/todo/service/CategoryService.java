@@ -49,6 +49,16 @@ public class CategoryService {
                 });
     }
 
+    public CategoryDTO merge(Long id, CategoryDTO categoryDTO) {
+        return repository.findById(id)
+                .map(cat -> {
+                    cat.mergeNotNull(mapper.dtoToEntity(categoryDTO));
+                    Category saved = repository.save(cat);
+                    return mapper.entityToDto(saved);
+                })
+                .orElseThrow(NoSuchElementException::new);
+    }
+
     public void delete(Long id) {
         Category found = repository.findById(id).orElseThrow(
                 () -> new NoSuchElementException("Category with id(" + id + ") does not exist")

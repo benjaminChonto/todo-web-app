@@ -51,6 +51,15 @@ public class TaskController {
         }
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<TaskDTO> merge(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
+        try {
+            return ResponseEntity.ok(service.merge(id, taskDTO));
+        } catch(NoSuchElementException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {

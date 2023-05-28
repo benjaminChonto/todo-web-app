@@ -1,5 +1,7 @@
 package ch.cern.todo.data.model;
 
+import ch.cern.todo.presentation.dto.TaskDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -28,6 +30,13 @@ public class TaskTodo {
         this.description = description;
         this.deadline = deadline;
         this.category = category;
+    }
+
+    public void mergeNotNull(TaskTodo task) {
+        if(task.getName() != null) name = task.getName();
+        if(task.getDescription() != null) description = task.getDescription();
+        if(task.getDeadline() != null) deadline = task.getDeadline();
+        if(task.getCategory() != null) category = task.getCategory();
     }
 
     @Override
@@ -82,4 +91,5 @@ public class TaskTodo {
     public void setCategory(Category category) {
         this.category = category;
     }
+
 }

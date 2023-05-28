@@ -1,5 +1,7 @@
 package ch.cern.todo.data.model;
 
+import ch.cern.todo.presentation.dto.CategoryDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -21,6 +23,11 @@ public class Category {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public void mergeNotNull(Category category) {
+        if(category.getName() != null) name = category.getName();
+        if(category.getDescription() != null) description = category.getDescription();
     }
 
     @Override
@@ -59,4 +66,5 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

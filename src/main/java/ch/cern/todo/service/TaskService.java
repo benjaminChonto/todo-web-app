@@ -55,6 +55,16 @@ public class TaskService {
                 });
     }
 
+    public TaskDTO merge(Long id, TaskDTO taskDTO) {
+        return repository.findById(id)
+                .map( task -> {
+                    task.mergeNotNull(mapper.dtoToEntity(taskDTO));
+                    TaskTodo saved = repository.save(task);
+                    return mapper.entityToDto(saved);
+                })
+                .orElseThrow(NoSuchElementException::new);
+    }
+
     public void delete(Long id) {
         TaskTodo found = repository.findById(id).orElseThrow(
                 () -> new NoSuchElementException("Task with id(" + id + ") does not exist")

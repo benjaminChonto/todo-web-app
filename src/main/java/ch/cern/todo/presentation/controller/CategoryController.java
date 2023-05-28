@@ -2,6 +2,7 @@ package ch.cern.todo.presentation.controller;
 
 import ch.cern.todo.presentation.dto.CategoryDTO;
 import ch.cern.todo.service.CategoryService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +49,15 @@ public class CategoryController {
             return ResponseEntity.ok(service.update(id, categoryDTO));
         } catch(Exception ex) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<CategoryDTO> merge(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO) {
+        try {
+            return ResponseEntity.ok(service.merge(id, categoryDTO));
+        } catch(NoSuchElementException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
