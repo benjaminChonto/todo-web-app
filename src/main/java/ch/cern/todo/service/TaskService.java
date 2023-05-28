@@ -43,7 +43,6 @@ public class TaskService {
         return repository.findById(id)
                 .map(task -> {
                     task.setName(taskUpdate.getName());
-                    task.setName(taskUpdate.getName());
                     task.setDescription(taskUpdate.getDescription());
                     task.setDeadline(taskUpdate.getDeadline());
                     task.setCategory(categoryMapper.dtoToEntity(taskUpdate.getCategory()));
