@@ -57,6 +57,8 @@ public class TaskController {
             return ResponseEntity.ok(service.merge(id, taskDTO));
         } catch(NoSuchElementException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch(Exception ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

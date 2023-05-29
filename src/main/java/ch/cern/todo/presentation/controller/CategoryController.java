@@ -58,6 +58,8 @@ public class CategoryController {
             return ResponseEntity.ok(service.merge(id, categoryDTO));
         } catch(NoSuchElementException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch(Exception ex) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
